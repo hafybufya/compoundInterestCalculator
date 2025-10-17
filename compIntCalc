@@ -1,28 +1,74 @@
 # compound interest calculator that takes initial savings amount, years of saving, number of compounding periods and the annual interest rate.
 
+#prompts variables
+initial_savings_prompt = "Enter your initial amount of savings (£): "
+time_prompt = "Enter the number of months you're saving for (whole numbers only): "
+rate_prompt = "Enter the annual interest rate (decimal): "
 
-def comp_int_calculator():
-    #user input: initial_saving, years, interest rate
-    initial_saving = float(input("Enter your initial amount of savings: "))
-    years = int(input("Enter the number of years you're saving for (whole numbers only): "))
-    interest_rate = float(input("Enter the annual interest rate (decimal): "))
+#prompts error handling
+prompt_error_handling_negative = "Amount cannot be below 0 "
+prompt_error_handling_non_numeric = "Amount must be a numerical value"
+prompt_error_handling_integer = "Amount must be a whole positive number"
 
-    #time acts as a counter between the starting year and the total years -> for loop
-    time = 0
+prompt_error_handling_dp = "Please enter a value with at most 2 decimal places."
+prompt_error_handling_rate= "Rate falls between 0 and 1"
 
-    # running_total = initial_saving + composite interest
-    running_total = initial_saving 
-    for time in range(0, years): # for each year/compounding period up to the entered number of years
-        print(f"Year {time}: £{running_total}")
-        time += 1
-        running_total = running_total * (1 + interest_rate)
-        # running_total = initial_saving*(1 + interest_rate/comp_periods)**(comp_periods*time)
+#value for any of these variables > 0
+min_number = 0
+max_rate = 1
 
-def savings_double_calc():
-    initial_savings =  float(input("Enter your initial amount of savings: "))
-    interest_rate = float(input("Enter the annual interest rate (decimal): "))
-    doubled_savings = initial_savings * 2
-    years_to_double = 0 # number of years it takes for the savings to double. for this, 'double' can be greater than or equal to 'doubled_savings'
-    # incomplete
-        
-comp_int_calculator()
+def initial_savings_amount():
+    while True:
+        try:
+            initial_savings_amount = float(input( initial_savings_prompt))  
+                #restrict user input to 2 dp
+            if initial_savings_amount * 100 != int(initial_savings_amount * 100):
+                print(f"{prompt_error_handling_dp}")
+                continue        
+                #user input > 0
+            if min_number < initial_savings_amount:               
+                return initial_savings_amount
+            else:
+                print(f"{prompt_error_handling_negative}")
+        #users can't input strings        
+        except ValueError:
+            print(f"{prompt_error_handling_non_numeric}") 
+initial_savings_amount = initial_savings_amount()
+
+#futue improvemtnt ; allowing users to be either decimal or whole number(percentage)
+def rate():
+    while True:
+        try:
+            rate = float(input(rate_prompt))            
+            if min_number < rate <=max_rate:               
+                return rate               
+            else:
+                print(f"{prompt_error_handling_rate}")        
+        except ValueError:
+            print(f"{prompt_error_handling_non_numeric}") #unhardcode numbers
+
+rate = rate()
+
+
+def time():
+    while True:
+        try:
+            time = int(input(time_prompt))            
+            if min_number < time:               
+                return time/12 #month/12 = year
+            else:
+                print(f"{prompt_error_handling_negative}")
+        #users can't input non-integers        
+        except ValueError:
+            print(f"{prompt_error_handling_integer}") #unhardcode numbers
+
+time= time()
+
+def comp_in_calc(initial_savings_amount, rate, time):
+    total_amount_saved = initial_savings_amount * (1 + rate) ** time
+    return total_amount_saved
+
+
+total_amount_saved = comp_in_calc(initial_savings_amount, rate, time)
+print(f'£{total_amount_saved}')
+
