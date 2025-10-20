@@ -1,4 +1,4 @@
-# compound interest calculator that takes initial savings amount, years of saving, number of compounding periods and the annual interest rate.
+# compound interest calculator that takes initial savings amount, months of saving, number of compounding periods and the annual interest rate.
 
 #prompts variables
 initial_savings_prompt = "Enter your initial amount of savings (£): "
@@ -71,4 +71,3 @@ def comp_in_calc(initial_savings_amount, rate, time):
 
 total_amount_saved = comp_in_calc(initial_savings_amount, rate, time)
 print(f'£{total_amount_saved}')
-

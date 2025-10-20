@@ -1,12 +1,15 @@
 import unittest
-from compIntCalc import *
+from unittest import mock
+from unittest.mock import Mock, MagicMock, patch
+import unittest.mock as mock
+from compIntCalc import comp_in_calc
 
 # define the unit tests
 class my_unit_tests(unittest.TestCase):
 
         # tests if results correct
     def test_days(self):
-        self.assertEqual(total_amount_saved = comp_in_calc(800, 0.05, 24), 882.0)
+        self.assertEqual(comp_in_calc(800, 0.05, 24), 882.0)
 
         #user input only be between min_number_week_days and max_number_week_days
 
