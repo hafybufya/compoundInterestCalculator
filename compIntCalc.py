@@ -23,17 +23,17 @@ def initial_savings_amount():
             initial_savings_amount = float(input( initial_savings_prompt))  
                 #restrict user input to 2 dp
             if initial_savings_amount * 100 != int(initial_savings_amount * 100):
-                print(f"{prompt_error_handling_dp}")
-                continue        
+                raise ValueError(prompt_error_handling_dp)
+                
                 #user input > 0
             if min_number < initial_savings_amount:               
                 return initial_savings_amount
             else:
-                print(f"{prompt_error_handling_negative}")
+                raise ValueError(prompt_error_handling_negative)
         #users can't input strings        
         except ValueError:
-            print(f"{prompt_error_handling_non_numeric}") 
-initial_savings_amount = initial_savings_amount()
+            #print(f"{prompt_error_handling_non_numeric}") 
+            raise ValueError(prompt_error_handling_non_numeric)
 
 #futue improvemtnt ; allowing users to be either decimal or whole number(percentage)
 def rate():
@@ -47,7 +47,6 @@ def rate():
         except ValueError:
             print(f"{prompt_error_handling_non_numeric}") #unhardcode numbers
 
-rate = rate()
 
 
 def time():
@@ -55,19 +54,30 @@ def time():
         try:
             time = int(input(time_prompt))            
             if min_number < time:               
-                return time/12 #month/12 = year
+                return time #in months
             else:
                 print(f"{prompt_error_handling_negative}")
         #users can't input non-integers        
         except ValueError:
             print(f"{prompt_error_handling_integer}") #unhardcode numbers
 
-time= time()
 
 def comp_in_calc(initial_savings_amount, rate, time):
+    time = time/12 #month/12 = year
     total_amount_saved = initial_savings_amount * (1 + rate) ** time
     return total_amount_saved
 
 
-total_amount_saved = comp_in_calc(initial_savings_amount, rate, time)
-print(f'£{total_amount_saved}')
+
+
+
+
+if __name__ == "__main__":
+    initial_savings_amount = initial_savings_amount()
+
+    rate = rate()
+
+    time= time()
+
+    total_amount_saved = comp_in_calc(initial_savings_amount, rate, time)
+    print(f'£{total_amount_saved:.2f}')
