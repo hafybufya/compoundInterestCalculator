@@ -34,24 +34,7 @@ def initial_savings_amount():
         
         return initial_amount
 
-# def initial_savings_amount():
-#     while True:
-#         user_input = input(initial_savings_prompt)
-#         try:
-#             amount = float(user_input)
-#         except ValueError:
-#             raise ValueError(prompt_error_handling_non_numeric)
 
-#         # Restrict to 2 decimal places
-#         if amount * 100 != int(amount * 100):
-#             raise ValueError(prompt_error_handling_dp)
-
-#         # Must be greater than min_number
-#         if amount <= min_number:
-#             raise ValueError(prompt_error_handling_negative)
-
-#         return amount
-    
 #future improvement: allowing users to enter either percentage or decimal
 def rate():
     while True:
@@ -63,6 +46,17 @@ def rate():
                 print(f"{prompt_error_handling_rate}")        
         except ValueError:
             print(f"{prompt_error_handling_non_numeric}") #unhardcode numbers
+
+# def rate():
+#     while True:
+#         try:
+#             rate = float(input(rate_prompt))            
+#             if min_number < rate <=max_rate:               
+#                 return rate               
+#             else:
+#                 print(f"{prompt_error_handling_rate}")        
+#         except ValueError:
+#             print(f"{prompt_error_handling_non_numeric}") #unhardcode numbers
 
 
 
