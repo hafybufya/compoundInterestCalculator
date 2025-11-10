@@ -1,7 +1,5 @@
 import unittest
-from unittest import mock
 from unittest.mock import Mock, MagicMock, patch
-import unittest.mock as mock
 from compIntCalc import *
 import pytest
 
@@ -13,14 +11,24 @@ class my_unit_tests(unittest.TestCase):
         self.assertEqual(comp_in_calc(800, 0.05, 24), 882.0)
 
 
-    def tests_value_error_savings(self):
+# TESTING ERROR TESTING FOR INITIAL SAVINGS AMOUNT FUNCTION
+
+        #checks savings will reject non numeric values
+    def tests_non_numeric_savings(self):
         with patch("builtins.input", return_value="abc"):
             with pytest.raises(ValueError, match = prompt_error_handling_non_numeric):
                 initial_savings_amount()
 
+        #checks savings will reject negative values
     def tests_value_min_value_savings(self):
         with patch("builtins.input", return_value="-1"):
             with pytest.raises(ValueError, match = prompt_error_handling_negative):
+                initial_savings_amount()
+    
+     #checks savings will reject numbers over 2 dp
+    def tests_value_2_dp(self):
+        with patch("builtins.input", return_value="800.577"):
+            with pytest.raises(ValueError, match = prompt_error_handling_dp):
                 initial_savings_amount()
 
 

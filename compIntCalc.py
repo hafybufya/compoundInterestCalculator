@@ -19,23 +19,40 @@ max_rate = 1
 
 def initial_savings_amount():
     while True:
+        initial_savings_amount = input( initial_savings_prompt)
         try:
-            initial_savings_amount = float(input( initial_savings_prompt))  
-                #restrict user input to 2 dp
-            if initial_savings_amount * 100 != int(initial_savings_amount * 100):
-                raise ValueError(prompt_error_handling_dp)
-                
-                #user input > 0
-            if min_number < initial_savings_amount:               
-                return initial_savings_amount
-            else:
-                raise ValueError(prompt_error_handling_negative)
-        #users can't input strings        
+            initial_amount = float(initial_savings_amount) 
         except ValueError:
-            #print(f"{prompt_error_handling_non_numeric}") 
             raise ValueError(prompt_error_handling_non_numeric)
 
-#futue improvemtnt ; allowing users to be either decimal or whole number(percentage)
+            #restrict user input to 2 dp
+        if initial_amount * 100 != int(initial_amount * 100):
+            raise ValueError(prompt_error_handling_dp)           
+            #user input > 0
+        if min_number > initial_amount:               
+             raise ValueError(prompt_error_handling_negative)
+        
+        return initial_amount
+
+# def initial_savings_amount():
+#     while True:
+#         user_input = input(initial_savings_prompt)
+#         try:
+#             amount = float(user_input)
+#         except ValueError:
+#             raise ValueError(prompt_error_handling_non_numeric)
+
+#         # Restrict to 2 decimal places
+#         if amount * 100 != int(amount * 100):
+#             raise ValueError(prompt_error_handling_dp)
+
+#         # Must be greater than min_number
+#         if amount <= min_number:
+#             raise ValueError(prompt_error_handling_negative)
+
+#         return amount
+    
+#future improvement: allowing users to enter either percentage or decimal
 def rate():
     while True:
         try:
