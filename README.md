@@ -4,6 +4,7 @@ Compound interest calculator which takes in user input to calculate total value 
 
 ## 📁 Project Structure
 
+```
 
 ├── mainCode.py
 ├── unitTest.py
@@ -12,6 +13,8 @@ Compound interest calculator which takes in user input to calculate total value 
 └── .circle.ci/
     └── config.yml
 
+```
+
 ## 🛠️ Installation
 
 Python 3.10 or newer to run python files
@@ -19,6 +22,7 @@ Python 3.10 or newer to run python files
 Python modules used:
 
 pytest - Running unit tests.
-,,,
+
+```
 pip install pytest
-,,, 
+```
