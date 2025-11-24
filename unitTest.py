@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import Mock, MagicMock, patch
-from compIntCalc import *
+from mainCode import *
 import pytest
 
 # define the unit tests
