@@ -5,14 +5,12 @@ Compound interest calculator which takes in user input to calculate total value 
 ## 📁 Project Structure
 
 ```
-
 ├── mainCode.py
 ├── unitTest.py
 ├── requirements.txt
 └── README.md
 └── .circle.ci/
     └── config.yml
-
 ```
 
 ## 🛠️ Installation
