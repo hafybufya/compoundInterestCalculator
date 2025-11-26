@@ -17,10 +17,12 @@ Compound interest calculator which takes in user input to calculate total value 
 
 Python 3.10 or newer to run python files
 
-Python modules used:
+Python modules required:
 
-pytest - Running unit tests.
+* pytest - Running unit tests.
 
+
+You can install required packages with:
 ```
 pip install pytest
 ```
