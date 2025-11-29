@@ -27,6 +27,17 @@ max_rate = 1 # Rate cannot go above 1 if decimal
 
 
 def initial_savings_amount():
+    """
+
+    Takes initial savings amount from user
+
+    Returns
+    -------
+
+    initial_amount -> float, user input which has experienced extensive error testing 
+
+    """
+
     while True:
         initial_savings_amount = input( initial_savings_prompt)
         try:
@@ -52,6 +63,17 @@ def initial_savings_amount():
 # ---------------------------------------------------------------------
 
 def rate():
+    """
+
+    Takes rate of interest from user
+
+    Returns
+    -------
+
+    rate -> float, annual interest rate as a percentage(%)
+
+    """
+
     while True:
         try:
             rate = float(input(rate_prompt)) 
@@ -72,6 +94,17 @@ def rate():
 # ---------------------------------------------------------------------
 
 def time():
+    """
+
+    Asks user to input a date and takes away from todays date
+
+    Returns
+    -------
+
+    time -> integer, time saved for in months
+
+    """
+
     while True:
         try:
             time = int(input(time_prompt))
@@ -92,6 +125,32 @@ def time():
 # ---------------------------------------------------------------------
 
 def comp_in_calc(initial_savings_amount, rate, time):
+    """
+
+    Calculates compound interest from user input
+
+
+    Parameters
+    ----------
+
+    initial_savings_amount :  savings_amount(£) from user input, float 
+    rate                   :  rate (%) from user input, float
+    time                   :  time (in months) from user input, integer
+
+    Calculations
+    ------------
+
+    Calculate total amount saved
+        - total_amount = initial_savings_amount *(1 + rate) ** time
+        
+    Returns
+    -------
+
+    total_amount_saved -> float, returned result of calculation 
+                                
+
+    """
+
 
     time = time/12 # Converting from months to years
     total_amount_saved = initial_savings_amount * (1 + rate) ** time
