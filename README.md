@@ -20,7 +20,7 @@ Python 3.10 or newer to run python files
 
 Python modules required:
 
-* pytest - Running unit tests.
+* pytest - running unit tests.
 
 
 You can install required packages with:
