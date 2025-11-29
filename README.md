@@ -8,6 +8,7 @@ Compound interest calculator which takes in user input to calculate total value 
 ├── mainCode.py
 ├── unitTest.py
 ├── requirements.txt
+├── LICENSE
 └── README.md
 └── .circle.ci/
     └── config.yml
@@ -26,3 +27,7 @@ You can install required packages with:
 ```
 pip install pytest
 ```
+
+## 📄 License
+This project is open source and available under the [MIT License](https://github.com/hafybufya/compound-interest-calculator/blob/main/LICENSE).
+
